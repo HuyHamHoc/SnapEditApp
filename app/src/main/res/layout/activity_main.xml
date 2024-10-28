@@ -35,6 +35,4 @@
         app:layout_constraintTop_toTopOf="parent"
         app:tint="@color/white"
         tools:ignore="ContentDescription,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
