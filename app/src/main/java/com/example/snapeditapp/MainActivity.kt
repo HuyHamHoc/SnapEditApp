@@ -1,6 +1,7 @@
 package com.example.snapeditapp
 
 import android.content.ContentValues
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
@@ -34,9 +35,11 @@ class MainActivity : AppCompatActivity() {
     private val pickMedia =
         registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri ->
             if (uri != null) {
+                val intent = Intent(this, EditImageActivity::class.java).apply {
+                    putExtra("imageUri", uri)
+                }
+                startActivity(intent)
                 Log.d("PhotoPicker", "Selected URI: $uri")
-            } else {
-                Log.d("PhotoPicker", "No media selected")
             }
         }
 

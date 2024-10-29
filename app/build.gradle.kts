@@ -52,6 +52,9 @@ dependencies {
     implementation (libs.androidx.camera.lifecycle)
     implementation (libs.androidx.camera.view)
     implementation (libs.androidx.camera.extensions)
+    //GPUImage
+    implementation (libs.gpuimage)
+
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
