@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
 import android.widget.Toast
+import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.CameraSelector
@@ -24,11 +25,20 @@ import java.util.Locale
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 
+
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private var imageCapture: ImageCapture? = null
     private lateinit var cameraExecutor: ExecutorService
     private var cameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
+    private val pickMedia =
+        registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri ->
+            if (uri != null) {
+                Log.d("PhotoPicker", "Selected URI: $uri")
+            } else {
+                Log.d("PhotoPicker", "No media selected")
+            }
+        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,15 +51,20 @@ class MainActivity : AppCompatActivity() {
             requestPermissions()
         }
 
+        cameraExecutor = Executors.newSingleThreadExecutor()
+
         binding.captureImage.setOnClickListener {
             takePhoto()
         }
 
-        binding.flipCamera.setOnClickListener{
+        binding.flipCamera.setOnClickListener {
             flipCamera()
         }
 
-        cameraExecutor = Executors.newSingleThreadExecutor()
+        binding.imageGallery.setOnClickListener {
+            pickMedia.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
+        }
+
     }
 
     private fun takePhoto() {

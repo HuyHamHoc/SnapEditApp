@@ -35,4 +35,16 @@
         app:layout_constraintTop_toTopOf="parent"
         app:tint="@color/white"
         tools:ignore="ContentDescription,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+    <ImageView
+        android:id="@+id/imageGallery"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="50dp"
+        android:src="@drawable/round_photo_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/captureImage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:tint="@color/white"
+        tools:ignore="ContentDescription" />
 </androidx.constraintlayout.widget.ConstraintLayout>
