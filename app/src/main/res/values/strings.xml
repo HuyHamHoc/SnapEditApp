@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">SnapEditApp</string>
-    <string name="apply_filter">Apply Filter</string>
+    <string name="edit_image">Edit Image</string>
 </resources>

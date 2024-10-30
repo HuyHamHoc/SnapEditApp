@@ -54,7 +54,8 @@ dependencies {
     implementation (libs.androidx.camera.extensions)
     //GPUImage
     implementation (libs.gpuimage)
-
+    //Coroutine
+    implementation(libs.kotlinx.coroutines.android)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
